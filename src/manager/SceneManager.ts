@@ -18,6 +18,8 @@ class SceneManager {
                 this.currentScene = new QFdevScene();
                 break;
             case "liyaowu":
+                SceneManager.releaseCurrentScene();
+                this.currentScene = new LywDevScene();
                 break;
             default:
                 break;

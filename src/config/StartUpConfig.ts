@@ -3,7 +3,7 @@ class StartUpConfig {
     //public startSance: SceneBase;
 
     constructor() {
-        this.startSceneName = "qiufeng";
+        this.startSceneName = "liyaowu";
         this.setStartMod();
     }
     public setStartMod(): void {

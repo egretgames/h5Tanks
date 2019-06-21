@@ -18,6 +18,7 @@
 		"bin-debug/LoadingUI.js",
 		"bin-debug/manager/SceneManager.js",
 		"bin-debug/manager/UIManager.js",
+		"bin-debug/scene/LywDevScene.js",
 		"bin-debug/scene/QFdevScene.js",
 		"bin-debug/GameMain.js",
 		"bin-debug/tool/ResHelper.js"
