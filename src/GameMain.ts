@@ -9,6 +9,7 @@ class GameMain {
 
     public constructor(state: egret.Stage) {
         GameMain.stage = state;
+        console.log(state);
         // 初始化configs
 
         // 初始化helpers
