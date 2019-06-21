@@ -1,7 +1,7 @@
 class QFdevScene extends SceneBase{
     constructor(){
         super();
-        console.log(typeof this);
+        GameMain.stage.addChild(this);
     }
 
     public Update():void{
