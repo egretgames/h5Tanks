@@ -13,12 +13,8 @@ class GameMain {
 
         // 初始化helpers
 
-        // 图层设置
-        UIManager.stage = GameMain.stage;
-        SceneManager.stage = GameMain.stage;
-
         // 启动
         let start = new StartUpConfig();
-        SceneManager.jumpBySceneName(start.getStartScene());
+        SceneManager.jumpBySceneName(start.startSceneName);
     }
 }

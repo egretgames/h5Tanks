@@ -2,5 +2,4 @@
 // 使用独立的显示层级，显示层级高于场景层
 
 class UIManager{
-    static stage:egret.Stage;
 }

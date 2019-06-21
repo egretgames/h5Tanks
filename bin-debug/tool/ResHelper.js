@@ -6,36 +6,28 @@
 //     constructor(){
 //         this.resConfig = new ResConfig();
 //     }
-
 //     // 1资源动态加载，按照url的实时加载
-    
 //     public lobby = "resource/assets/lobby/";
 //     public resNames: string[] = [];
 //     public resMap: {} = {};
-
 //     public dynamicLoadConfig() {
 //         this.resNames.push(this.lobby.concat("back.png"));
-
 //         for (let k in this.resNames) {
 //             egret.log("k = ", k, ", v = ", this.resNames[k]);
 //             RES.getResByUrl(this.resNames[k], this.dynamicProcess, this);
 //         }
 //     }
-
 //     public dynamicProcess(res: any, url: string): void {
-
 //         if (!res) {
 //             egret.error("error url = ", url, ",   res === null");
 //         } else {
 //             egret.log("ok url = ", url, ",   res not null");
 //         }
-
 //         this.resMap[url] = res;
 //         if (Object.keys(this.resMap).length === Object.keys(this.resNames).length) {
 //             this.dynamicLoadComplete();
 //         }
 //     }
-
 //     public dynamicLoadComplete() {
 //         let back = new egret.Bitmap();
 //         back.texture = RES.getRes(this.lobby.concat("back.png"));
@@ -44,5 +36,5 @@
 //         this.addChild(back);
 //         this.createGroup();
 //     }
-
-// }
+// } 
+//# sourceMappingURL=ResHelper.js.map

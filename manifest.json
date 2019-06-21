@@ -9,10 +9,17 @@
 		"libs/modules/promise/promise.js"
 	],
 	"game": [
-		"bin-debug/GameMain.js",
-		"bin-debug/LoadingUI.js",
+		"bin-debug/scene/SceneBase.js",
+		"bin-debug/config/StartUpConfig.js",
 		"bin-debug/Main.js",
 		"bin-debug/Platform.js",
-		"bin-debug/view/UIManager.js"
+		"bin-debug/config/GameConfig.js",
+		"bin-debug/config/ResConfig.js",
+		"bin-debug/LoadingUI.js",
+		"bin-debug/manager/SceneManager.js",
+		"bin-debug/manager/UIManager.js",
+		"bin-debug/scene/QFdevScene.js",
+		"bin-debug/GameMain.js",
+		"bin-debug/tool/ResHelper.js"
 	]
 }
