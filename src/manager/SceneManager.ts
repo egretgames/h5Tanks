@@ -16,12 +16,14 @@ class SceneManager {
             case "qiufeng":
                 SceneManager.releaseCurrentScene();
                 this.currentScene = new QFdevScene();
+                
                 break;
             case "liyaowu":
                 break;
             default:
                 break;
         }
+        GameMain.stage.addChild(this.currentScene);
     }
 
 }

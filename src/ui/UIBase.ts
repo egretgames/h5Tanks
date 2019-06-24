@@ -1,4 +1,4 @@
-abstract class SceneBase extends egret.DisplayObjectContainer {
+abstract class UIBase extends egret.DisplayObjectContainer{
     public constructor() {
         super();
         this.once(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
@@ -11,7 +11,6 @@ abstract class SceneBase extends egret.DisplayObjectContainer {
     private onUpdate(e: egret.Event) {
         this.Update();
     }
-    // ts没有虚方法虚方法，该方法由子类重写完成
-    // 帧刷新方法，update frame方法，该方法的调用速度取决于游戏设置的固定帧率 GameConfig.frameRate
-    protected abstract Update():void;
+    // UI 基类，不一定需要Update方法，没有把update方法定义为抽象方法，如果UI子类需要，可以重写
+    protected Update():void{}
 }

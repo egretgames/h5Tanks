@@ -4,11 +4,8 @@ class QFdevScene extends SceneBase{
 
     constructor(){
         super();
-        
-        this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
-        GameMain.stage.addChild(this);
     }
-    private onAddToStage(event: egret.Event) {
+    protected onAddToStage(event: egret.Event) {
         this.load(this.initMovieClip);
     }
     
