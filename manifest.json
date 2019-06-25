@@ -10,16 +10,20 @@
 	],
 	"game": [
 		"bin-debug/scene/SceneBase.js",
-		"bin-debug/config/StartUpConfig.js",
-		"bin-debug/Main.js",
+		"bin-debug/ui/UIBase.js",
+		"bin-debug/scene/LogoScene.js",
 		"bin-debug/Platform.js",
 		"bin-debug/config/GameConfig.js",
-		"bin-debug/config/ResConfig.js",
-		"bin-debug/LoadingUI.js",
+		"bin-debug/manager/ResManager.js",
 		"bin-debug/manager/SceneManager.js",
 		"bin-debug/manager/UIManager.js",
+		"bin-debug/LoadingUI.js",
+		"bin-debug/scene/MainMenuScene.js",
 		"bin-debug/scene/QFdevScene.js",
 		"bin-debug/GameMain.js",
-		"bin-debug/tool/ResHelper.js"
+		"bin-debug/tool/ResHelper.js",
+		"bin-debug/Main.js",
+		"bin-debug/ui/logo/LogoFace.js",
+		"bin-debug/ui/mainmenu/MainMenuFace.js"
 	]
 }

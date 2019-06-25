@@ -6,16 +6,20 @@ class GameMain {
 
     public static sceneManager:SceneManager;
     public static uiManager: UIManager;
+    public static resManager: ResManager;
 
     public constructor(state: egret.Stage) {
         GameMain.stage = state;
-        console.log(state);
-        // 初始化configs
 
-        // 初始化helpers
+        // 初始化 场景管理工具 ui管理工具 资源管工具
+        GameMain.resManager = new ResManager();
+        GameMain.sceneManager = new SceneManager();
+        GameMain.uiManager = new UIManager();
 
-        // 启动
-        let start = new StartUpConfig();
-        SceneManager.jumpBySceneName(start.startSceneName);
+        // 初始化 配置类 各个配置类均为静态类 用于存储各种配置
+        GameConfig.initGameConfig();
+        
+        GameMain.sceneManager.jumpToLogoScene();
     }
+
 }

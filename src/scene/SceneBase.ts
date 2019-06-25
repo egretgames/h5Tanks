@@ -1,4 +1,6 @@
 abstract class SceneBase extends egret.DisplayObjectContainer {
+    public sceneName:string = null;
+    public resKeys:Array<string> = null;
     public constructor() {
         super();
         this.once(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
@@ -7,6 +9,12 @@ abstract class SceneBase extends egret.DisplayObjectContainer {
 
     protected abstract onAddToStage(event: egret.Event):void
 
+    public loadResBySceneNameAndKeys():void{
+        if(this.sceneName !=null && this.resKeys != null)
+        {
+            GameMain.resManager.loadResByDynamicGroup(this.sceneName,this.resKeys);
+        }
+    }
     
     private onUpdate(e: egret.Event) {
         this.Update();

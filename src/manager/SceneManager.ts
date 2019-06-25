@@ -2,28 +2,49 @@
 // 使用独立的显示层级，使用主显示层级低于UI层
 
 class SceneManager {
-    public static currentScene: SceneBase = null;
 
-    public static releaseCurrentScene(): void {
-        if(this.currentScene!= null){
+    public currentScene: SceneBase = null;
+    public logoScene: LogoScene;
+    public firstSceneName: string = "mainMenu";
+
+    public releaseCurrentScene(): void {
+        if (this.currentScene != null) {
             this.currentScene.removeChildren();
         }
     }
 
-    public static jumpBySceneName(sceneName: string): void {
+    public jumpToLogoScene(): void {
+        this.releaseCurrentScene();
+        this.logoScene = new LogoScene();
+        GameMain.stage.addChildAt(GameMain.sceneManager.logoScene, 0);
+        
+    }
+
+    public jumpToFirstScene(): void {
+        if(this.logoScene){
+            this.logoScene.removeChildren();
+            this.logoScene = null;
+        }
+        this.jumpBySceneName(this.firstSceneName);
+    }
+
+    public jumpBySceneName(sceneName: string): void {
         console.log()
         switch (sceneName) {
             case "qiufeng":
-                SceneManager.releaseCurrentScene();
+                this.releaseCurrentScene();
                 this.currentScene = new QFdevScene();
-                
+                break;
+            case "mainMenu":
+                this.releaseCurrentScene();
+                this.currentScene = new MainMenuScene();
                 break;
             case "liyaowu":
-                break;
+                break;  
             default:
                 break;
         }
-        GameMain.stage.addChild(this.currentScene);
+        GameMain.stage.addChildAt(this.currentScene, 0);
     }
 
 }
