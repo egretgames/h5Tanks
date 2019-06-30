@@ -21,9 +21,9 @@ class TimeButton extends egret.TextField{
         this.touchEnabled = true;
         this.addEventListener(egret.TouchEvent.TOUCH_TAP,callback,parent);
     }
-    public onSelectTime(event:egret.Event){
-        this.callback(event.$target);
-    }
+    // public onSelectTime(event:egret.Event){
+    //     this.callback(event.$target);
+    // }
 }
 class SelectComponent extends egret.DisplayObjectContainer{
 
@@ -59,8 +59,8 @@ class SelectComponent extends egret.DisplayObjectContainer{
     public onSelectTime(event:egret.Event):void{
         console.log(event.$target);
         this.parent.timeLength.text = event.$target.text;
-        this.parent.data.timeLength = event.$target.minutes;
-        //this.selectMinutes = event.$target.minutes;
+        this.parent.data.userInputTimeLength = event.$target.minutes*60*1000;
+        this.parent.data.userInputTime = this.parent.onSetTime();
         this.parent.removeChild(this);
     }
 

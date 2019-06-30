@@ -76,15 +76,15 @@ class SetDataLayer extends SceneBase {
         this.userAdress.textColor = this.textColor;
         this.addChild(this.userAdress);
 
-        this.yearCom = new InputComponent(this.lineX + this.fontSize * 3, this.secondLineY, this.fontSize *4, this.fontSize * 3, 0,3000, this.data.selectDate.getFullYear());
+        this.yearCom = new InputComponent(this.lineX + this.fontSize * 3, this.secondLineY, this.fontSize *4, this.fontSize * 3, 0,3000, this.data.userInputTime.getFullYear());
         this.addChild(this.yearCom);
-        this.monthCom = new InputComponent(this.lineX + this.fontSize * 8, this.secondLineY, this.fontSize *4, this.fontSize * 3, 1,12, this.data.selectDate.getMonth());
+        this.monthCom = new InputComponent(this.lineX + this.fontSize * 8, this.secondLineY, this.fontSize *4, this.fontSize * 3, 1,12, this.data.userInputTime.getMonth());
         this.addChild(this.monthCom);
-        this.dayCom = new InputComponent(this.lineX + this.fontSize * 13, this.secondLineY, this.fontSize *4, this.fontSize * 3, 1,31, this.data.selectDate.getFullYear());
+        this.dayCom = new InputComponent(this.lineX + this.fontSize * 13, this.secondLineY, this.fontSize *4, this.fontSize * 3, 1,31, this.data.userInputTime.getDay());
         this.addChild(this.dayCom);
-        this.hourCom = new InputComponent(this.lineX + this.fontSize * 18, this.secondLineY, this.fontSize *4, this.fontSize * 3, 0,23, this.data.selectDate.getMonth());
+        this.hourCom = new InputComponent(this.lineX + this.fontSize * 18, this.secondLineY, this.fontSize *4, this.fontSize * 3, 0,23, this.data.userInputTime.getHours());
         this.addChild(this.hourCom);
-        this.minuteCom = new InputComponent(this.lineX + this.fontSize * 23, this.secondLineY, this.fontSize *4, this.fontSize * 3, 0,59, this.data.selectDate.getFullYear());
+        this.minuteCom = new InputComponent(this.lineX + this.fontSize * 23, this.secondLineY, this.fontSize *4, this.fontSize * 3, 0,59, this.data.userInputTime.getMinutes());
         this.addChild(this.minuteCom);
 
         this.timeLength = new egret.TextField();
@@ -104,7 +104,27 @@ class SetDataLayer extends SceneBase {
         this.timeLength.addEventListener(egret.TouchEvent.TOUCH_TAP,this.openSelectComponent,this);
 
         this.selectComponent = new SelectComponent(this.lineX + this.fontSize * 34, this.secondLineY, this.fontSize, this);
+
+        let btn = new egret.TextField();
+        btn.border = true;
+        btn.borderColor = 0x000000;
+        btn.size = this.fontSize;
+        btn.textColor = 0x000000;
+        btn.width = this.fontSize * 5;
+        btn.height = this.fontSize + 4;
+        btn.text = "获取数据";
+        btn.textAlign = "center";
+        btn.verticalAlign = "middle";
+        btn.x = 50;
+        btn.y = this.secondLineY + 100;
+        this.addChild(btn);
+        btn.touchEnabled = true;
+        btn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onGetDataButtonTap,this);
+
         this.SetData();
+    }
+    public onGetDataButtonTap(event:egret.Event):void{
+        GameMain.showStage.data.onGetData();
     }
     public openSelectComponent():void{
         this.addChild(this.selectComponent);

@@ -3,7 +3,7 @@ class ShowStage extends SceneBase{
     public data:AllData;
     public backLayer:BackLayer;
     public setDataLayer:SetDataLayer;
-    public buttonsState:ShowButtonsState;
+    public buttonsLayer1:ShowButtonsLayer;
 
     constructor(){
         super();
@@ -13,15 +13,18 @@ class ShowStage extends SceneBase{
         
         this.setDataLayer = new SetDataLayer();
         this.backLayer = new BackLayer(0,250,"数据概览");
-        this.buttonsState = new ShowButtonsState(0,300);
+        this.buttonsLayer1 = new ShowButtonsLayer(0,300);
         
         
         this.addChildAt(this.backLayer,1);
         this.addChildAt(this.setDataLayer,2);
-        this.addChildAt(this.buttonsState,3);
+        this.addChildAt(this.buttonsLayer1,3);
     }
 
     public Update():void{
 
+    }
+    public onGetDataOk():void{
+        this.buttonsLayer1.setData();
     }
 }

@@ -1,11 +1,14 @@
 class TimeBlock extends egret.Shape {
-    constructor(x: number, y: number, ss: number, timeLength: number, pidWidth: number) {
+    public timeMillisecond:number;
+    constructor(data:number, pidX: number, pidY: number, selectTimeLength: number, timeLength: number, pidWidth: number) {
         super();
-        this.x = x;
-        this.y = y;
+        this.x = pidX;
+        this.y = pidY;
+        this.graphics.beginFill(0x444444);
+        //this.graphics.drawRect(pidX + );
     }
 }
-class ShowButtonsState extends SceneBase {
+class ShowButtonsLayer extends SceneBase {
 
     public data: AllData;
 
@@ -20,6 +23,7 @@ class ShowButtonsState extends SceneBase {
     public startTime: eui.Label;
     public keepTime: eui.Label;
 
+    public scollBar:ScollBarSelectionComponent;
     public buttonTable: ButtonTable;
 
     constructor(x: number, y: number) {
@@ -42,7 +46,7 @@ class ShowButtonsState extends SceneBase {
         this.buttonName.x = this.labelX + this.fontSize * 5;
         this.buttonName.y = this.labelY;
         this.buttonName.textColor = 0x000000;
-        this.buttonName.text = "111";
+        this.buttonName.text = "nan";
         this.addChild(this.buttonName);
 
         this.startTime = new eui.Label();
@@ -50,7 +54,7 @@ class ShowButtonsState extends SceneBase {
         this.startTime.x = this.labelX + this.fontSize * 15;
         this.startTime.y = this.labelY;
         this.startTime.textColor = 0x000000;
-        this.startTime.text = "222";
+        this.startTime.text = "nan";
         this.addChild(this.startTime);
 
         this.keepTime = new eui.Label();
@@ -58,14 +62,20 @@ class ShowButtonsState extends SceneBase {
         this.keepTime.x = this.labelX + this.fontSize * 25;
         this.keepTime.y = this.labelY;
         this.keepTime.textColor = 0x000000;
-        this.keepTime.text = "333";
+        this.keepTime.text = "nan";
         this.addChild(this.keepTime);
+
+        this.scollBar = new ScollBarSelectionComponent(80,520,this.data.userInputTime,this.data.userInputTimeLength);
+        this.addChild(this.scollBar);
 
         this.buttonTable = new ButtonTable(this.tableX, this.tableY);
         this.addChild(this.buttonTable);
 
     }
-
+    public setData():void{
+        this.scollBar.setData();
+    }
+    //public onSelectTime(time1:number,posy:number)
     public Update(): void {
 
     }
