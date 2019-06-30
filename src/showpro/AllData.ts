@@ -4,6 +4,8 @@ class AllData{
     public height:number;
 
     //about ui
+    public fontSize: number = 16;
+
     //for SetDataLayer
     public matid:string = "";
     public userName:string = "1111";
