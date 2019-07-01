@@ -26,15 +26,16 @@ class InputComponent extends egret.DisplayObjectContainer{
     }
     public onTouchUpBegin(event: egret.Event):void{
         this.up.scaleY = 0.9;
-        console.log(event.$target.name);
     }
     public onTouchUpEnd(event: egret.Event):void{
+        
         this.up.scaleY = 1;
         this.value++;
         if(this.value > this.limitMax){
             this.value = this.limitMax;
-            this.inputBox.text = this.value.toString();
         }
+        this.inputBox.text = this.value.toString();
+        
     }
     public onTouchDownBegin(event: egret.Event):void{
         this.down.scaleY = 0.9;
@@ -44,8 +45,8 @@ class InputComponent extends egret.DisplayObjectContainer{
         this.value--;
         if(this.value < this.limitMin){
             this.value = this.limitMin;
-            this.inputBox.text = this.value.toString();
         }
+        this.inputBox.text = this.value.toString();
     }
     public onTextInputOver(event:egret.Event):void{
         console.log("onInputOver");
@@ -63,7 +64,7 @@ class InputComponent extends egret.DisplayObjectContainer{
     public drawComponent():void{
 
         this.up = new egret.TextField();
-        this.up.name = "abc";
+        //this.up.name = "abc";
         this.up.border = true;
         this.up.borderColor = 0x000000;
         this.up.size = this.comHeight/3;
