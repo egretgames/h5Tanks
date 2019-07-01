@@ -13,6 +13,7 @@ class GameMain {
 
     public constructor(stage: egret.Stage) {
         GameMain.stage = stage;
+        //mouse.enable(stage);
         stage.scaleMode = egret.StageScaleMode.NO_SCALE;
 
         // 初始化 场景管理工具 ui管理工具 资源管工具

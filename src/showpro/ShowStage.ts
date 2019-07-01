@@ -8,6 +8,10 @@ class ShowStage extends SceneBase{
     constructor(){
         super();
         this.data = new AllData();
+        // this.x = 0;
+        // this.y = 0;
+        // this.width = 10000;
+        // this.height = 10000;
     }
     public onAddToStage(event: egret.Event):void{
         
@@ -19,8 +23,12 @@ class ShowStage extends SceneBase{
         this.addChildAt(this.backLayer,1);
         this.addChildAt(this.setDataLayer,2);
         this.addChildAt(this.buttonsLayer1,3);
+       
     }
-
+    //  this.addEventListener(mouse.MouseEvent.MOUSE_WHEEL,this.onMouseWheel,this);
+    // public onMouseWheel(event:MouseEvent):void{
+    //     console.log(event);
+    // }
     public Update():void{
 
     }
