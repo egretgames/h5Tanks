@@ -36,7 +36,7 @@ class SetDataLayer extends SceneBase {
         label.textColor = this.textColor;
         this.addChild(label);
 
-        label = new eui.Label("日期：             年         月         日         时         分          获取时长：");
+        label = new eui.Label("日期：               年                  月                  日                   时                  分      获取时长：");
         label.size = this.fontSize;
         label.x = this.lineX;
         label.y = this.secondLineY;
@@ -57,34 +57,34 @@ class SetDataLayer extends SceneBase {
 
         this.userName = new eui.Label();
         this.userName.size = this.fontSize;
-        this.userName.x = this.lineX + this.fontSize * 20;
+        this.userName.x = this.lineX + this.fontSize * 18;
         this.userName.y = this.firstLineY;
         this.userName.textColor = this.textColor;
         this.addChild(this.userName);
 
         this.userPhone = new eui.Label();
         this.userPhone.size = this.fontSize;
-        this.userPhone.x = this.lineX + this.fontSize * 30;
+        this.userPhone.x = this.lineX + this.fontSize * 27;
         this.userPhone.y = this.firstLineY;
         this.userPhone.textColor = this.textColor;
         this.addChild(this.userPhone);
 
         this.userAdress = new eui.Label();
         this.userAdress.size = this.fontSize;5
-        this.userAdress.x = this.lineX + this.fontSize * 40;
+        this.userAdress.x = this.lineX + this.fontSize * 35;
         this.userAdress.y = this.firstLineY;
         this.userAdress.textColor = this.textColor;
         this.addChild(this.userAdress);
 
         this.yearCom = new InputComponent(this.lineX + this.fontSize * 3, this.secondLineY, this.fontSize *4, this.fontSize * 3, 0,3000, this.data.userInputTime.getFullYear());
         this.addChild(this.yearCom);
-        this.monthCom = new InputComponent(this.lineX + this.fontSize * 8, this.secondLineY, this.fontSize *4, this.fontSize * 3, 1,12, this.data.userInputTime.getMonth());
+        this.monthCom = new InputComponent(this.lineX + this.fontSize * 9, this.secondLineY, this.fontSize *4, this.fontSize * 3, 1,12, this.data.userInputTime.getMonth());
         this.addChild(this.monthCom);
-        this.dayCom = new InputComponent(this.lineX + this.fontSize * 13, this.secondLineY, this.fontSize *4, this.fontSize * 3, 1,31, this.data.userInputTime.getDay());
+        this.dayCom = new InputComponent(this.lineX + this.fontSize * 15, this.secondLineY, this.fontSize *4, this.fontSize * 3, 1,31, this.data.userInputTime.getDay());
         this.addChild(this.dayCom);
-        this.hourCom = new InputComponent(this.lineX + this.fontSize * 18, this.secondLineY, this.fontSize *4, this.fontSize * 3, 0,23, this.data.userInputTime.getHours());
+        this.hourCom = new InputComponent(this.lineX + this.fontSize * 21, this.secondLineY, this.fontSize *4, this.fontSize * 3, 0,23, this.data.userInputTime.getHours());
         this.addChild(this.hourCom);
-        this.minuteCom = new InputComponent(this.lineX + this.fontSize * 23, this.secondLineY, this.fontSize *4, this.fontSize * 3, 0,59, this.data.userInputTime.getMinutes());
+        this.minuteCom = new InputComponent(this.lineX + this.fontSize * 27, this.secondLineY, this.fontSize *4, this.fontSize * 3, 0,59, this.data.userInputTime.getMinutes());
         this.addChild(this.minuteCom);
 
         this.timeLength = new egret.TextField();
@@ -97,26 +97,26 @@ class SetDataLayer extends SceneBase {
         this.timeLength.text = "5分钟";
         this.timeLength.textAlign = "center";
         this.timeLength.verticalAlign = "middle";
-        this.timeLength.x = this.lineX + this.fontSize * 30;
+        this.timeLength.x = this.lineX + this.fontSize * 39;
         this.timeLength.y = this.secondLineY; 
         this.addChild(this.timeLength);
         this.timeLength.touchEnabled = true;
         this.timeLength.addEventListener(egret.TouchEvent.TOUCH_TAP,this.openSelectComponent,this);
 
-        this.selectComponent = new SelectComponent(this.lineX + this.fontSize * 34, this.secondLineY, this.fontSize, this);
+        this.selectComponent = new SelectComponent(this.lineX + this.fontSize * 39, this.secondLineY+this.fontSize * 1, this.fontSize, this);
 
         let btn = new egret.TextField();
-        btn.border = true;
-        btn.borderColor = 0x000000;
+        btn.background = true;
+        btn.backgroundColor = 0x5c9bd3;
         btn.size = this.fontSize;
-        btn.textColor = 0x000000;
-        btn.width = this.fontSize * 5;
-        btn.height = this.fontSize + 4;
+        btn.textColor = 0xffffff;
+        btn.width = this.fontSize * 6;
+        btn.height = this.fontSize + 10;
         btn.text = "获取数据";
         btn.textAlign = "center";
         btn.verticalAlign = "middle";
         btn.x = 50;
-        btn.y = this.secondLineY + 100;
+        btn.y = this.secondLineY + 70;
         this.addChild(btn);
         btn.touchEnabled = true;
         btn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onGetDataButtonTap,this);

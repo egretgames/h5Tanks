@@ -1,8 +1,8 @@
 class ButtonBlock extends egret.Shape{
-    public rectColor:number = 0x888888;
+    public rectColor:number = 0x5c9bd3;
     public rectWidth:number;
     public rectHeight:number;
-    public rectBorderColor:number = 0x222222;
+    public rectBorderColor:number = 0x4c6f91;
     constructor(x:number, y:number, w:number,h:number){
         super();
         this.x = x;

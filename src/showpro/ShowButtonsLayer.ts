@@ -34,7 +34,7 @@ class ShowButtonsLayer extends SceneBase {
         this.y = y;
     }
     public onAddToStage(event: egret.Event): void {
-        let label = new eui.Label("当前按键：                         开始时间：                            时长：           ");
+        let label = new eui.Label("当前按键：                    开始时间：                         时长：           ");
         label.size = this.fontSize;
         label.x = this.labelX;
         label.y = this.labelY;
