@@ -23,7 +23,7 @@ class ShowButtonsLayer extends SceneBase {
     public startTime: eui.Label;
     public keepTime: eui.Label;
 
-    public scollBar:ScollBarSelectionComponent;
+    public scrollBar:ScrollBarSelectionComponent;
     public buttonTable: ButtonTable;
 
     constructor(x: number, y: number) {
@@ -65,18 +65,22 @@ class ShowButtonsLayer extends SceneBase {
         this.keepTime.text = "nan";
         this.addChild(this.keepTime);
 
-        this.scollBar = new ScollBarSelectionComponent(80,520,this.data.userInputTime,this.data.userInputTimeLength);
-        this.addChild(this.scollBar);
+        this.scrollBar = new ScrollBarSelectionComponent(80,520,this);
+        this.addChild(this.scrollBar);
 
         this.buttonTable = new ButtonTable(this.tableX, this.tableY);
         this.addChild(this.buttonTable);
 
     }
+    public onScrollBarChanage():void{
+        console.log("onScrollBarChanage");
+    }
     public setData():void{
-        this.scollBar.setData();
+        this.scrollBar.setData();
     }
     //public onSelectTime(time1:number,posy:number)
     public Update(): void {
 
     }
+
 }

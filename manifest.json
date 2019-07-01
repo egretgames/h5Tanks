@@ -25,7 +25,7 @@
 		"bin-debug/showpro/BackLayerBar.js",
 		"bin-debug/showpro/ButtonTable.js",
 		"bin-debug/showpro/InputComponent.js",
-		"bin-debug/showpro/ScollBarSelectionComponent.js",
+		"bin-debug/showpro/ScrollBarSelectionComponent.js",
 		"bin-debug/showpro/SelectComponent.js",
 		"bin-debug/showpro/SetDataLayer.js",
 		"bin-debug/showpro/ShowButtonsLayer.js",
