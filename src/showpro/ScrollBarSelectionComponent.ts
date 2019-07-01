@@ -23,13 +23,9 @@ class ScrollBlock extends egret.Shape {
         this.addEventListener(egret.TouchEvent.TOUCH_END, this.endTouch, this)
     }
     public onTouch(event: egret.TouchEvent): void {
-        console.log("onTouch");
-        console.log(event);
         this.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onMoveThis, this);
     }
     public endTouch(event: egret.TouchEvent): void {
-        console.log("endTouch");
-        console.log(event);
         this.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.onMoveThis, this);
         this.pid.onSelectBarChanage();
     }
