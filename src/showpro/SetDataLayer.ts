@@ -124,7 +124,7 @@ class SetDataLayer extends SceneBase {
         this.SetData();
     }
     public onGetDataButtonTap(event:egret.Event):void{
-        GameMain.showStage.data.onGetData();
+        GameMain.showStage.data.startGetData();
     }
     public openSelectComponent():void{
         this.addChild(this.selectComponent);

@@ -87,7 +87,7 @@ class InputComponent extends egret.DisplayObjectContainer{
         this.inputBox.type = egret.TextFieldType.INPUT;
         this.inputBox.border = true;
         this.inputBox.borderColor = 0x000000;
-        this.inputBox.size = this.comHeight/3;
+        this.inputBox.size = this.comHeight/3-2;
         this.inputBox.textColor = 0x000000;
         this.inputBox.width = this.comWidth;
         this.inputBox.height = this.comHeight/3;

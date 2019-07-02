@@ -26,6 +26,9 @@ class ShowButtonsLayer extends SceneBase {
     public scrollBar:ScrollBarSelectionComponent;
     public buttonTable: ButtonTable;
 
+    public buttonList:Array<TimeBlock>;
+    public timeBlockList:Array<TimeBlock>;
+
     constructor(x: number, y: number) {
         super();
         this.data = GameMain.showStage.data;
@@ -72,11 +75,25 @@ class ShowButtonsLayer extends SceneBase {
         this.addChild(this.buttonTable);
 
     }
+
+    public drawButtonBlocks():void{
+        this.buttonList = new Array<TimeBlock>();
+        this.timeBlockList = new Array<TimeBlock>();
+        let timaA = this.data.selectStartTime.getTime();
+        let timeB = this.data.selectEndTime.getTime();
+
+        for(let i = 0;i<this.data.buttonCommands.length;i++)
+        {
+            
+        }
+    }
     public onScrollBarChanage():void{
         console.log("onScrollBarChanage");
+        this.drawButtonBlocks();
     }
     public setData():void{
         this.scrollBar.setData();
+        this.drawButtonBlocks();
     }
     //public onSelectTime(time1:number,posy:number)
     public Update(): void {
