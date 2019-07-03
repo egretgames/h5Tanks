@@ -50,7 +50,7 @@ class ButtonTable extends egret.DisplayObjectContainer{
         for(let i = 0;i<16;i++){
             if(i<8){
                 this.buttonArray[i] = new ButtonBlock(this.intervalH*2,this.intervalH + (this.intervalH+this.blockH) * i,this.blockW,this.blockH);
-                this.labelArray[i] = new ButtonID(this.intervalH, this.intervalH + (this.intervalH+this.blockH) * i, 12,i.toString());
+                this.labelArray[i] = new ButtonID(0, this.intervalH + (this.intervalH+this.blockH) * i, 12,i.toString());
             } else {
                 this.buttonArray[i] = new ButtonBlock(this.intervalH*4+this.blockW, this.intervalH + (this.intervalH+this.blockH) * (i-8),this.blockW,this.blockH);
                 this.labelArray[i] = new ButtonID(this.intervalH*5+this.blockW*2, this.intervalH + (this.intervalH+this.blockH) * (i-8), 12,i.toString());

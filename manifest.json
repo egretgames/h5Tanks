@@ -27,6 +27,7 @@
 		"bin-debug/showpro/ButtonTable.js",
 		"bin-debug/showpro/InputComponent.js",
 		"bin-debug/showpro/PlayAnimationLayer.js",
+		"bin-debug/showpro/PlayerComponent.js",
 		"bin-debug/showpro/ScrollBarSelectionComponent.js",
 		"bin-debug/showpro/SelectComponent.js",
 		"bin-debug/showpro/SetDataLayer.js",

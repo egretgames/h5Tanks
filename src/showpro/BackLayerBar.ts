@@ -1,21 +1,21 @@
-class BackLayer extends egret.DisplayObjectContainer{
-    
-    public text:string;
-    public barHeight:number = 40;
+class BackLayer extends egret.DisplayObjectContainer {
+
+    public text: string;
+    public barHeight: number = 40;
     public fontSize = 20;
 
-    constructor(x:number,y:number,text:string){
+    constructor(x: number, y: number, text: string) {
         super();
         this.x = x;
         this.y = y;
         this.text = text;
         this.once(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }
-    public onAddToStage(event: egret.Event):void{
+    public onAddToStage(event: egret.Event): void {
 
         let back = new egret.Shape();
         back.graphics.beginFill(0xaecde9);
-        back.graphics.drawRect( 0, 0, 1000,this.barHeight );
+        back.graphics.drawRect(0, 0, 900, this.barHeight);
         back.graphics.endFill();
         this.addChild(back);
 

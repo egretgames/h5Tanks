@@ -51,16 +51,15 @@ class ScrollBarSelectionComponent extends egret.DisplayObjectContainer {
 
     public timeLine: egret.Shape;
     // 线段的起始点坐标 线段两边各多出一个lineX的长度作为坐标轴延伸
-    public lineX: number = 100;
+    public lineX: number = 50;
     public lineY: number = 50;
     // 坐标轴有效线段的长度
-    public lineWidht: number = 800;
+    public lineWidht: number = 700;
 
     public scrollBarBlockA: ScrollBlock;
     public scrollBarBlockB: ScrollBlock;
     public blockLabelA: eui.Label;
     public blockLabelB: eui.Label;
-
 
     constructor(posx: number, posy: number, pid: ShowButtonsLayer) {
         super();
@@ -165,8 +164,6 @@ class ScrollBarSelectionComponent extends egret.DisplayObjectContainer {
             this.pid.data.selectEndTime = pointB;
             this.pid.data.selectTimeLength = pointB.getTime() - pointA.getTime();
         }
-        console.log(this.pid.data.selectStartTime.toString());
-        console.log(this.pid.data.selectEndTime.toString());
         this.pid.onScrollBarChanageStop();
     }
 }

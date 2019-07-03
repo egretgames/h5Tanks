@@ -1,9 +1,11 @@
 class ShowStage extends SceneBase{
     
     public data:AllData;
-    public backLayer:BackLayer;
     public setDataLayer:SetDataLayer;
+    public backLayer1:BackLayer;
+    public backLayer2:BackLayer;
     public buttonsLayer1:ShowButtonsLayer;
+    public buttonsLayer2:PlayAnimationLayer;
 
     constructor(){
         super();
@@ -16,13 +18,17 @@ class ShowStage extends SceneBase{
     public onAddToStage(event: egret.Event):void{
         
         this.setDataLayer = new SetDataLayer();
-        this.backLayer = new BackLayer(0,250,"数据概览");
+        this.backLayer1 = new BackLayer(0,250,"数据概览");
+        this.backLayer2 = new BackLayer(960,250,"数据播放");
         this.buttonsLayer1 = new ShowButtonsLayer(0,300);
+        this.buttonsLayer2 = new PlayAnimationLayer(900,300);
         
         
-        this.addChildAt(this.backLayer,1);
-        this.addChildAt(this.setDataLayer,2);
-        this.addChildAt(this.buttonsLayer1,3);
+        this.addChild(this.setDataLayer);
+        this.addChild(this.backLayer1);
+        this.addChild(this.backLayer2);
+        this.addChild(this.buttonsLayer1);
+        this.addChild(this.buttonsLayer2);
        
     }
     //  this.addEventListener(mouse.MouseEvent.MOUSE_WHEEL,this.onMouseWheel,this);

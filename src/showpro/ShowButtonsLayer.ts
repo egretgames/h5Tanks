@@ -43,7 +43,7 @@ class ShowButtonsLayer extends SceneBase {
     public labelX: number = 250;
     public labelY: number = 30;
 
-    public tableX: number = 150;
+    public tableX: number = 100;
     public tableY: number = 100;
 
     public buttonName: eui.Label;
@@ -156,8 +156,6 @@ class ShowButtonsLayer extends SceneBase {
     public onButtonBlockClick(id:number,time:number,timeLength:number):void{
         this.buttonName.text = id.toString();
         let date = new Date(time);
-        console.log(time);
-        console.log(date);
         this.startTime.text = date.getHours().toString()+":"+date.getMinutes().toString()+":"+date.getSeconds().toString()+"."+(time%1000).toString();
         let hours = Math.floor(timeLength/(60*60*1000));
         let minutes =  Math.floor((timeLength-hours*60*60*1000)/(60*1000));
@@ -166,7 +164,6 @@ class ShowButtonsLayer extends SceneBase {
         this.keepTime.text = hours.toString()+":"+minutes.toString()+":"+seconds.toString()+"."+ss.toString();
     }
     public onScrollBarChanageStop(): void {
-        console.log("onScrollBarChanage");
         this.drawButtonBlocks();
     }
     public setData(): void {
