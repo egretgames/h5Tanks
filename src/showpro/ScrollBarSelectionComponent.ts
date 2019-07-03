@@ -39,9 +39,6 @@ class ScrollBlock extends egret.Shape {
             this.x = 1000 + this.anchorOffsetX;
         }
         this.pid.onBlockMove();
-        console.log(this.x);
-
-
     }
 
 }
@@ -70,7 +67,6 @@ class ScrollBarSelectionComponent extends egret.DisplayObjectContainer {
         this.pid = pid;
         this.x = posx;
         this.y = posy;
-        this.startTime = pid.data.userInputTime;
         this.drawComponent();
     }
 
@@ -93,7 +89,7 @@ class ScrollBarSelectionComponent extends egret.DisplayObjectContainer {
     public setData(): void {
         this.removeChildren();
         this.drawComponent();
-
+        this.startTime = this.pid.data.userInputTime;
         let start = new eui.Label();
         start.text = this.startTime.getHours().toString() + ":" + this.startTime.getMinutes().toString();
         start.size = 12;
@@ -147,10 +143,10 @@ class ScrollBarSelectionComponent extends egret.DisplayObjectContainer {
     public onBlockMove(): void {
         let timeA:Date = this.getTimeByBlockPosX(this.scrollBarBlockA.x);
         this.blockLabelA.text = timeA.getHours().toString() + ":" + timeA.getMinutes().toString() +":"+timeA.getSeconds().toString();
-        //this.blockLabelA.text = (Math.max(this.scrollBarBlockA.x - this.lineX, 1) * this.pid.data.userInputTimeLength / this.lineWidht + this.pid.data.userInputTime.getTime()).toString();
         this.blockLabelA.anchorOffsetX = this.blockLabelA.width / 2;
         this.blockLabelA.x = this.scrollBarBlockA.x;
         this.blockLabelA.y = this.scrollBarBlockA.y + 60;
+
         let timeB = this.getTimeByBlockPosX(this.scrollBarBlockB.x);
         this.blockLabelB.text = timeB.getHours().toString() + ":" + timeB.getMinutes().toString() +":"+timeB.getSeconds().toString();
         this.blockLabelB.anchorOffsetX = this.blockLabelB.width / 2;
@@ -159,14 +155,18 @@ class ScrollBarSelectionComponent extends egret.DisplayObjectContainer {
     }
     public onSelectBarChanage(): void {
         let pointA: Date = this.getTimeByBlockPosX(this.scrollBarBlockA.x);
-        let pointB: Date = this.getTimeByBlockPosX(this.scrollBarBlockA.y);
+        let pointB: Date = this.getTimeByBlockPosX(this.scrollBarBlockB.x);
         if (pointA > pointB) {
             this.pid.data.selectStartTime = pointB;
             this.pid.data.selectEndTime = pointA;
+            this.pid.data.selectTimeLength = pointA.getTime() - pointB.getTime();
         } else {
             this.pid.data.selectStartTime = pointA;
             this.pid.data.selectEndTime = pointB;
+            this.pid.data.selectTimeLength = pointB.getTime() - pointA.getTime();
         }
-        this.pid.onScrollBarChanage();
+        console.log(this.pid.data.selectStartTime.toString());
+        console.log(this.pid.data.selectEndTime.toString());
+        this.pid.onScrollBarChanageStop();
     }
 }

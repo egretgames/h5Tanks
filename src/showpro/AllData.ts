@@ -51,13 +51,14 @@ class AllData {
     constructor() {
         //this.onGetData();
     }
-
+    public btnCommandIndex = 1;
     public getButtonsCommand(castTimeUnit: number, buttonCommands: string, packageTime: number): void {
         let highParam: number;
         let lowParam: number;
         let buttonData: ButtonCommandData;
         let buttonID: number;
         for (let i = 0; i < buttonCommands.length; i += 2) {
+
             highParam = parseInt("0x" + buttonCommands[i]);
             lowParam = parseInt("0x" + buttonCommands[i + 1]);
             if (Math.floor(highParam / 8) == 0) {
@@ -70,20 +71,20 @@ class AllData {
         }
         this.buttonCommands.sort((a: ButtonCommandData, b: ButtonCommandData) => { return a.time - b.time })
     }
+    public index = 1;
     public getCommands(pack: string, time: number): void {
         let commands = pack.split("F2");
-        let lastComTimeUnit: number;         //上一个命令时间
+        let firstComTimeUnit: number;         //上一个命令时间
         let currentComTimeUnit: number;      //当前命令时间
         let castTimeUnit: number;            //两个命令的时间差
         for (let i = 1; i < commands.length; i++) {
-            currentComTimeUnit = parseInt("0x" + commands[i].substr(2, 8));
+            currentComTimeUnit = parseInt("0x" + commands[i].substr(2, 10));
             if (i == 1) {
                 castTimeUnit = 0;
-            } else {
-                castTimeUnit = currentComTimeUnit - lastComTimeUnit;
+                firstComTimeUnit = currentComTimeUnit;
             }
+            castTimeUnit = currentComTimeUnit - firstComTimeUnit;
             this.getButtonsCommand(castTimeUnit, commands[i].substr(10), time);
-            lastComTimeUnit = currentComTimeUnit;
         }
         //console.log("012345".substr(1,3)); 123
     }
@@ -109,6 +110,10 @@ class AllData {
         // 假定获取数据的时间是 2019 7 1 11：30 - 12：30； ---   1561951800000 + 60×60×1000
         this.userInputTime = new Date(1561951800000);
         this.userInputTimeLength = 60 * 60 * 1000;
+
+        this.selectStartTime = this.userInputTime;
+        this.selectTimeLength = this.userInputTimeLength;
+        this.selectEndTime = new Date(this.selectStartTime.getTime()+this.selectTimeLength);
         //this.dataSource = ********
         this.onGetData();
     }
