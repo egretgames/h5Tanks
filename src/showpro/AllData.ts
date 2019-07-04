@@ -49,7 +49,6 @@ class AllData {
     public buttonCommands: Array<ButtonCommandData>;
 
     constructor() {
-        //this.onGetData();
     }
     public btnCommandIndex = 1;
     public getButtonsCommand(castTimeUnit: number, buttonCommands: string, packageTime: number): void {
@@ -97,6 +96,10 @@ class AllData {
 
     // 拉去服务器数据后 的数据处理函数
     public onGetData(): void {
+        //滑块时间 设置为用户输入时间
+        this.selectStartTime = this.userInputTime;
+        this.selectTimeLength = this.userInputTimeLength;
+        this.selectEndTime = new Date(this.selectStartTime.getTime()+this.selectTimeLength);
         this.getPackage();
  
         GameMain.showStage.onGetDataOk();
@@ -111,9 +114,6 @@ class AllData {
         this.userInputTime = new Date(1561951800000);
         this.userInputTimeLength = 60 * 60 * 1000;
 
-        this.selectStartTime = this.userInputTime;
-        this.selectTimeLength = this.userInputTimeLength;
-        this.selectEndTime = new Date(this.selectStartTime.getTime()+this.selectTimeLength);
         //this.dataSource = ********
         this.onGetData();
     }

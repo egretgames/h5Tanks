@@ -66,10 +66,10 @@ class ScrollBarSelectionComponent extends egret.DisplayObjectContainer {
         this.pid = pid;
         this.x = posx;
         this.y = posy;
-        this.drawComponent();
+        this.drawBaseLine();
     }
 
-    public drawComponent(): void {
+    public drawBaseLine(): void {
         this.timeLine = new egret.Shape();
 
         this.timeLine.graphics.lineStyle(1, 0x000000);
@@ -85,9 +85,9 @@ class ScrollBarSelectionComponent extends egret.DisplayObjectContainer {
         this.addChild(this.timeLine);
 
     }
-    public setData(): void {
+    public redrawComponent(): void {
         this.removeChildren();
-        this.drawComponent();
+        this.drawBaseLine();
         this.startTime = this.pid.data.userInputTime;
         let start = new eui.Label();
         start.text = this.startTime.getHours().toString() + ":" + this.startTime.getMinutes().toString();

@@ -7,8 +7,16 @@ class PlayerComponent extends egret.DisplayObjectContainer{
     public lineY: number = 50;
     public lineWidht: number = 700;
 
+    public btnReset:egret.TextField;
+    public btnStartPlay: egret.TextField;
+    public btnEndPlay: egret.TextField;
+    public scrollBarBlock: ScrollBlock;
+    public blockLabelA: eui.Label;
+    public blockLabelB: eui.Label;
+
     constructor(posx:number,posy:number, parent:PlayAnimationLayer){
         super();
+        
         this.x = posx;
         this.y = posy;
         this.pid = parent;
@@ -18,16 +26,19 @@ class PlayerComponent extends egret.DisplayObjectContainer{
     public onAddToStage():void{
 
         this.timeLine = new egret.Shape();
-        this.timeLine.graphics.lineStyle(1, 0x000000);
-        this.timeLine.graphics.moveTo(0, this.lineY);
-        this.timeLine.graphics.lineTo(this.lineWidht + this.lineX * 2, this.lineY);
+        this.timeLine.graphics.lineStyle(2, 0x222222);
+        this.timeLine.graphics.moveTo(this.lineX, this.lineY);
+        this.timeLine.graphics.lineTo(this.lineWidht + this.lineX, this.lineY);
         this.timeLine.graphics.moveTo(this.lineX, this.lineY);
         this.timeLine.graphics.lineTo(this.lineX, this.lineY - 15);
-        this.timeLine.graphics.moveTo(this.lineX + this.lineWidht / 2, this.lineY);
-        this.timeLine.graphics.lineTo(this.lineX + this.lineWidht / 2, this.lineY - 15);
+        // this.timeLine.graphics.moveTo(this.lineX + this.lineWidht / 2, this.lineY);
+        // this.timeLine.graphics.lineTo(this.lineX + this.lineWidht / 2, this.lineY - 15);
         this.timeLine.graphics.moveTo(this.lineX + this.lineWidht, this.lineY);
         this.timeLine.graphics.lineTo(this.lineX + this.lineWidht, this.lineY - 15);
 
         this.addChild(this.timeLine);
+    }
+    public redrawComponent():void{
+
     }
 }

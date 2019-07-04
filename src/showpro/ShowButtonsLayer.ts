@@ -46,6 +46,9 @@ class ShowButtonsLayer extends SceneBase {
     public tableX: number = 100;
     public tableY: number = 100;
 
+    public scrollBarX: number = 80;
+    public scrollBarY: number = 520
+
     public buttonName: eui.Label;
     public startTime: eui.Label;
     public keepTime: eui.Label;
@@ -64,6 +67,12 @@ class ShowButtonsLayer extends SceneBase {
         this.y = y;
     }
     public onAddToStage(event: egret.Event): void {
+        
+        let bg = new egret.Shape();
+        bg.graphics.lineStyle(2, 0x222222);
+        bg.graphics.drawRect(0,0,900,650);
+        this.addChild(bg);
+
         let label = new eui.Label("当前按键：                    开始时间：                         时长：           ");
         label.size = this.fontSize;
         label.x = this.labelX;
@@ -95,7 +104,7 @@ class ShowButtonsLayer extends SceneBase {
         this.keepTime.text = "nan";
         this.addChild(this.keepTime);
 
-        this.scrollBar = new ScrollBarSelectionComponent(80, 520, this);
+        this.scrollBar = new ScrollBarSelectionComponent(this.scrollBarX, this.scrollBarY, this);
         this.addChild(this.scrollBar);
 
         this.buttonTable = new ButtonTable(this.tableX, this.tableY);
@@ -164,15 +173,15 @@ class ShowButtonsLayer extends SceneBase {
         this.keepTime.text = hours.toString()+":"+minutes.toString()+":"+seconds.toString()+"."+ss.toString();
     }
     public onScrollBarChanageStop(): void {
-        this.drawButtonBlocks();
+        GameMain.showStage.onUserSetLocalTime();
     }
-    public setData(): void {
-        this.scrollBar.setData();
+    public updateLayer(): void {
+        this.scrollBar.redrawComponent();
         this.drawButtonBlocks();
     }
     //public onSelectTime(time1:number,posy:number)
     public Update(): void {
-
+        
     }
 
 }
