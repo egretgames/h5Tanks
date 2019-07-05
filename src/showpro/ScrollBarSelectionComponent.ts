@@ -1,9 +1,12 @@
 class ScrollBlock extends egret.Shape {
     public rectW: number = 20;
     public pid: ScrollBarSelectionComponent;
-
-    constructor(posx: number, posy: number, parent: ScrollBarSelectionComponent) {
+    public startX: number;
+    public endX:number;
+    constructor(posx: number, posy: number, startX:number, endX:number, parent: ScrollBarSelectionComponent) {
         super();
+        this.startX = startX;
+        this.endX = endX;
         this.pid = parent;
         this.graphics.lineStyle(2, 0x000000);
         this.graphics.moveTo(this.rectW / 2, 0);
@@ -32,11 +35,11 @@ class ScrollBlock extends egret.Shape {
     public onMoveThis(event: egret.TouchEvent): void {
 
         this.x += event.localX - this.anchorOffsetX;
-        if (this.x < 100) {
-            this.x = 100;
+        if (this.x < this.startX) {
+            this.x = this.startX;
         }
-        if (this.x > 1000 + this.anchorOffsetX) {
-            this.x = 1000 + this.anchorOffsetX;
+        if (this.x > this.endX + this.anchorOffsetX) {
+            this.x = this.endX + this.anchorOffsetX;
         }
         this.pid.onBlockMove();
     }
@@ -118,9 +121,9 @@ class ScrollBarSelectionComponent extends egret.DisplayObjectContainer {
         end.y = this.lineY - 30;
         this.addChild(end);
 
-        this.scrollBarBlockA = new ScrollBlock(this.lineX, this.lineY + 2, this);
+        this.scrollBarBlockA = new ScrollBlock(this.lineX, this.lineY + 2,this.lineX,this.lineX+this.lineWidht, this);
         this.addChild(this.scrollBarBlockA);
-        this.scrollBarBlockB = new ScrollBlock(this.lineX + this.lineWidht, this.lineY + 2, this);
+        this.scrollBarBlockB = new ScrollBlock(this.lineX + this.lineWidht, this.lineY + 2,this.lineX,this.lineX+this.lineWidht, this);
         this.addChild(this.scrollBarBlockB);
 
         this.blockLabelA = new eui.Label();

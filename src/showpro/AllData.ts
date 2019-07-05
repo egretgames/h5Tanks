@@ -52,6 +52,7 @@ class AllData {
     }
     public btnCommandIndex = 1;
     public getButtonsCommand(castTimeUnit: number, buttonCommands: string, packageTime: number): void {
+        console.log(castTimeUnit);
         let highParam: number;
         let lowParam: number;
         let buttonData: ButtonCommandData;
@@ -77,17 +78,18 @@ class AllData {
         let currentComTimeUnit: number;      //当前命令时间
         let castTimeUnit: number;            //两个命令的时间差
         for (let i = 1; i < commands.length; i++) {
-            currentComTimeUnit = parseInt("0x" + commands[i].substr(2, 10));
+            currentComTimeUnit = parseInt("0x" + commands[i].substr(2, 8));
             if (i == 1) {
-                castTimeUnit = 0;
                 firstComTimeUnit = currentComTimeUnit;
             }
             castTimeUnit = currentComTimeUnit - firstComTimeUnit;
+            
             this.getButtonsCommand(castTimeUnit, commands[i].substr(10), time);
         }
         //console.log("012345".substr(1,3)); 123
     }
     public getPackage(): void {
+        console.log("getPackage");
         this.buttonCommands = new Array<ButtonCommandData>();
         for (let i = 0; i < this.dataSource.length; i++) {
             this.getCommands(this.dataSource[i].package, this.dataSource[i].time);
@@ -101,7 +103,6 @@ class AllData {
         this.selectTimeLength = this.userInputTimeLength;
         this.selectEndTime = new Date(this.selectStartTime.getTime()+this.selectTimeLength);
         this.getPackage();
- 
         GameMain.showStage.onGetDataOk();
     }
 

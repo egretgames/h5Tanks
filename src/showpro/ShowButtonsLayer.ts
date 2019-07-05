@@ -32,7 +32,7 @@ class TimeBlock extends egret.Shape {
         this.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onClick,this);
     }
     public onClick(evnet:egret.TouchEvent):void{
-        this.pid.onButtonBlockClick(this.buttonID,this.startTime,this.maxTime);
+        this.pid.onButtonBlockClick(this.buttonID,this.startTime,this.timeLength);
     }
 }
 class ShowButtonsLayer extends SceneBase {

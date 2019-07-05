@@ -1,3 +1,18 @@
+class ButtonStateBlock extends egret.Shape{
+    constructor(posX:number,posY:number,w:number,h:number){
+        super();
+        this.x = posX;
+        this.y=  posY;
+        this.graphics.beginFill(0x666666,1);
+        this.graphics.drawRect(2,2,w-4,h-4);
+        this.graphics.endFill();
+        this.visible = false;
+    }
+    public setState(isPress:boolean){
+        this.visible = isPress;
+    }
+}
+
 class PlayAnimationLayer extends SceneBase{ 
 
     public data: AllData;
@@ -13,6 +28,7 @@ class PlayAnimationLayer extends SceneBase{
 
     public buttonTable:ButtonTable;
     public playerControll:PlayerComponent;
+    public btnStateBlocks:Array<ButtonStateBlock>;
 
     constructor(x:number,y:number){
         super();
@@ -34,19 +50,29 @@ class PlayAnimationLayer extends SceneBase{
         this.buttonTable = new ButtonTable(this.tableX, this.tableY);
         this.addChild(this.buttonTable);
 
-        this.redraw();
+        this.btnStateBlocks = new Array<ButtonStateBlock>();
+        for(let i = 0;i<this.buttonTable.buttonArray.length;i++){
+            this.btnStateBlocks[i] = new ButtonStateBlock(this.tableX+this.buttonTable.buttonArray[i].x, this.tableY+this.buttonTable.buttonArray[i].y, this.buttonTable.buttonArray[i].rectWidth,this.buttonTable.buttonArray[i].rectHeight);
+            this.addChild(this.btnStateBlocks[i]);
+        }
+
     }
 
-    public redraw():void{
-        this.playerControll.redrawComponent();
-    }
+    // public redraw():void{
+    //     this.startTime = this.data.selectStartTime.getTime();
+    //     this.endTime = this.data.selectEndTime.getTime();
+    //     this.timeLength = this.endTime - this.startTime;
+    //     this.playerControll.redrawComponent();
+    // }
 
     public updateLayer():void{
         this.startTime = this.data.selectStartTime.getTime();
         this.endTime = this.data.selectEndTime.getTime();
         this.timeLength = this.endTime - this.startTime;
-
-        this.redraw();
+        this.playerControll.redrawComponent();
+    }
+    public setButtonStateBlock(id:number,isPress:boolean):void{
+        this.btnStateBlocks[id].setState(isPress);
     }
     protected Update():void{
         

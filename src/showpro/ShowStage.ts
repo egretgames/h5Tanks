@@ -18,10 +18,10 @@ class ShowStage extends SceneBase{
     public onAddToStage(event: egret.Event):void{
         
         this.setDataLayer = new SetDataLayer();
-        this.backLayer1 = new BackLayer(0,250,"数据概览");
-        this.backLayer2 = new BackLayer(900,250,"数据播放");
-        this.buttonsLayer1 = new ShowButtonsLayer(0,300);
-        this.buttonsLayer2 = new PlayAnimationLayer(900,300);
+        this.backLayer1 = new BackLayer(0,180,"数据概览");
+        this.backLayer2 = new BackLayer(900,180,"数据播放");
+        this.buttonsLayer1 = new ShowButtonsLayer(0,250);
+        this.buttonsLayer2 = new PlayAnimationLayer(900,250);
         
         this.addChild(this.backLayer1);
         this.addChild(this.backLayer2);

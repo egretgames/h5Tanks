@@ -115,8 +115,8 @@ class SetDataLayer extends SceneBase {
         btn.text = "获取数据";
         btn.textAlign = "center";
         btn.verticalAlign = "middle";
-        btn.x = 50;
-        btn.y = this.secondLineY + 70;
+        btn.x = 850;
+        btn.y = this.firstLineY;
         this.addChild(btn);
         btn.touchEnabled = true;
         btn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onGetDataButtonTap,this);
