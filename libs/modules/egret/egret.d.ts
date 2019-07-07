@@ -427,7 +427,7 @@ declare namespace egret {
          * @platform Web,Native
          * @language zh_CN
          */
-        readonly parent: DisplayObjectContainer;
+        readonly pid: DisplayObjectContainer;
         /**
          * @private
          * 设置父级显示对象

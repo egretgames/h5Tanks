@@ -33,7 +33,6 @@ class ScrollBlock extends egret.Shape {
         this.pid.onSelectBarChanage();
     }
     public onMoveThis(event: egret.TouchEvent): void {
-
         this.x += event.localX - this.anchorOffsetX;
         if (this.x < this.startX) {
             this.x = this.startX;
@@ -46,20 +45,39 @@ class ScrollBlock extends egret.Shape {
 
 }
 
-class MouseMoveMasking extends egret.Shape{
-    public listener:IhasMouseMoveEvent;
-    public pid:egret.DisplayObjectContainer;
-    constructor(posx:number,posy:number,w:number,h:number,pid:egret.DisplayObjectContainer, listener:IhasMouseMoveEvent){
-        super();
-        this.listener = listener;
-        this.pid = pid;
-        this.graphics.beginFill(0xFFFFFF,0.5);
-        this.graphics.drawRect(posx,posy,w,h);
-        this.graphics.endFill();
-        this.touchEnabled = true;
-        //this.pid.
-    }
-}
+// class MouseMoveMasking extends egret.Shape{
+//     public listener:IhasMouseMoveEvent;
+//     public pid:egret.DisplayObjectContainer;
+//     constructor(posx:number,posy:number,w:number,h:number,pid:egret.DisplayObjectContainer, listener:IhasMouseMoveEvent){
+//         super();
+//         this.listener = listener;
+//         this.pid = pid;
+//         this.graphics.beginFill(0xFF0000,0.5);
+//         this.graphics.drawRect(posx,posy,w,h);
+//         this.graphics.endFill();
+//         this.touchEnabled = true;
+//         this.pid.addChild(this);
+//     }
+//     public startListen():void{
+//         this.visible = true;
+//         this.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onMoveThis, this);
+//     }
+//     public stopListen():void{
+//         this.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.onMoveThis, this);
+//         this.visible = false;
+//     }
+//     public onMoveThis(event:TouchEvent):void{
+
+//         // this.x += event.localX - this.anchorOffsetX;
+//         // if (this.x < this.startX) {
+//         //     this.x = this.startX;
+//         // }
+//         // if (this.x > this.endX + this.anchorOffsetX) {
+//         //     this.x = this.endX + this.anchorOffsetX;
+//         // }
+//         // this.listener.onMouseMove();
+//     }
+// }
 
 class ScrollBarSelectionComponent extends egret.DisplayObjectContainer {
 
