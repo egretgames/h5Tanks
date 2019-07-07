@@ -49,7 +49,6 @@ class InputComponent extends egret.DisplayObjectContainer{
         this.inputBox.text = this.value.toString();
     }
     public onTextInputOver(event:egret.Event):void{
-        console.log("onInputOver");
         this.value = 0;
         this.value = +this.inputBox.text;
 

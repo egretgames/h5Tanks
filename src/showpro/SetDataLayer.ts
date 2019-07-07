@@ -51,7 +51,7 @@ class SetDataLayer extends SceneBase {
         this.matidInput.y = this.firstLineY - 2
         this.matidInput.width = this.fontSize * 10;
         this.matidInput.height = this.fontSize + 2;
-        this.matidInput.text = "输入地垫ID";
+        this.matidInput.text = this.data.defaultMatid;
         //this.matidInput.skinName = textInputSkin;
         this.addChild(this.matidInput);
 
@@ -75,16 +75,16 @@ class SetDataLayer extends SceneBase {
         this.userAdress.y = this.firstLineY;
         this.userAdress.textColor = this.textColor;
         this.addChild(this.userAdress);
-
-        this.yearCom = new InputComponent(this.lineX + this.fontSize * 3, this.secondLineY, this.fontSize *4, this.fontSize * 3, 0,3000, this.data.userInputTime.getFullYear());
+        
+        this.yearCom = new InputComponent(this.lineX + this.fontSize * 3, this.secondLineY, this.fontSize *4, this.fontSize * 3, 0,3000, this.data.defaultStartTime.getFullYear());
         this.addChild(this.yearCom);
-        this.monthCom = new InputComponent(this.lineX + this.fontSize * 9, this.secondLineY, this.fontSize *4, this.fontSize * 3, 1,12, this.data.userInputTime.getMonth());
+        this.monthCom = new InputComponent(this.lineX + this.fontSize * 9, this.secondLineY, this.fontSize *4, this.fontSize * 3, 1,12, this.data.defaultStartTime.getMonth()+1);
         this.addChild(this.monthCom);
-        this.dayCom = new InputComponent(this.lineX + this.fontSize * 15, this.secondLineY, this.fontSize *4, this.fontSize * 3, 1,31, this.data.userInputTime.getDay());
+        this.dayCom = new InputComponent(this.lineX + this.fontSize * 15, this.secondLineY, this.fontSize *4, this.fontSize * 3, 1,31, this.data.defaultStartTime.getDate());
         this.addChild(this.dayCom);
-        this.hourCom = new InputComponent(this.lineX + this.fontSize * 21, this.secondLineY, this.fontSize *4, this.fontSize * 3, 0,23, this.data.userInputTime.getHours());
+        this.hourCom = new InputComponent(this.lineX + this.fontSize * 21, this.secondLineY, this.fontSize *4, this.fontSize * 3, 0,23, this.data.defaultStartTime.getHours());
         this.addChild(this.hourCom);
-        this.minuteCom = new InputComponent(this.lineX + this.fontSize * 27, this.secondLineY, this.fontSize *4, this.fontSize * 3, 0,59, this.data.userInputTime.getMinutes());
+        this.minuteCom = new InputComponent(this.lineX + this.fontSize * 27, this.secondLineY, this.fontSize *4, this.fontSize * 3, 0,59, this.data.defaultStartTime.getMinutes());
         this.addChild(this.minuteCom);
 
         this.timeLength = new egret.TextField();
@@ -94,7 +94,7 @@ class SetDataLayer extends SceneBase {
         this.timeLength.textColor = 0x000000;
         this.timeLength.width = this.fontSize*5;
         this.timeLength.height = this.fontSize+2;
-        this.timeLength.text = "5分钟";
+        this.timeLength.text = this.data.defaultTimeLengthText;
         this.timeLength.textAlign = "center";
         this.timeLength.verticalAlign = "middle";
         this.timeLength.x = this.lineX + this.fontSize * 39;
@@ -123,8 +123,12 @@ class SetDataLayer extends SceneBase {
 
         this.SetData();
     }
+
     public onGetDataButtonTap(event:egret.Event):void{
-        GameMain.showStage.data.startGetData();
+        this.data.userInputTime = new Date(this.yearCom.value,this.monthCom.value-1,this.dayCom.value,this.hourCom.value,this.minuteCom.value,0,0);
+        this.data.userInputTimeLength = this.selectComponent.timeLength;
+        this.data.matid = this.matidInput.text;
+        this.data.startGetData();
     }
     public openSelectComponent():void{
         this.addChild(this.selectComponent);
@@ -133,10 +137,6 @@ class SetDataLayer extends SceneBase {
         this.userName.text = this.data.userName;
         this.userPhone.text = this.data.userPhone;
         this.userAdress.text = this.data.userAdress;
-    }
-    public onSetTime():Date{
-        let dateTime = new Date(this.yearCom.value,this.monthCom.value,this.dayCom.value,this.hourCom.value,this.minuteCom.value,0,0);
-        return dateTime;
     }
 
     public Update(): void {

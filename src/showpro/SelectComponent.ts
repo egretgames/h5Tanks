@@ -1,7 +1,7 @@
 class TimeButton extends egret.TextField{
     public minutes:number;
     public callback:any;
-    public parent:SelectComponent;
+    public pid:SelectComponent;
     constructor(index:number,fontSize:number,lable:string,minutes:number,parent:SelectComponent,callback:any){
         super();
         this.minutes = minutes;
@@ -16,29 +16,25 @@ class TimeButton extends egret.TextField{
         this.verticalAlign = "middle";
         this.x = 0;
         this.y = fontSize*index+index*4; 
-        this.parent = parent;
-        //this.parent.addChild(this);
+        this.pid = parent;
         this.touchEnabled = true;
         this.addEventListener(egret.TouchEvent.TOUCH_TAP,callback,parent);
     }
-    // public onSelectTime(event:egret.Event){
-    //     this.callback(event.$target);
-    // }
 }
 class SelectComponent extends egret.DisplayObjectContainer{
 
     public buttonCount:number = 9;
     public fontSize:number; 
     public btnText:string;
-    public selectMinutes:number;
-    public parent:SetDataLayer;
+    public timeLength:number;
+    public pid:SetDataLayer;
     constructor(x:number,y:number,fontSize:number, parent:SetDataLayer){
         super();
         this.x = x;
         this.y = y;
         this.fontSize = fontSize;
-        //this.once(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
-        this.parent = parent;
+        this.timeLength = parent.data.defaultTImeLength;
+        this.pid = parent;
         this.drawComponent();
     }
     // private onAddToStage(event: egret.Event):void{
@@ -57,11 +53,9 @@ class SelectComponent extends egret.DisplayObjectContainer{
     }
     
     public onSelectTime(event:egret.Event):void{
-        console.log(event.$target);
-        this.parent.timeLength.text = event.$target.text;
-        this.parent.data.userInputTimeLength = event.$target.minutes*60*1000;
-        this.parent.data.userInputTime = this.parent.onSetTime();
-        this.parent.removeChild(this);
+        this.pid.timeLength.text = event.$target.text;
+        this.timeLength = event.$target.minutes*60*1000;
+        this.pid.removeChild(this);
     }
 
 }

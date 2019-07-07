@@ -16,7 +16,6 @@ class ShowStage extends SceneBase{
         // this.height = 10000;
     }
     public onAddToStage(event: egret.Event):void{
-        
         this.setDataLayer = new SetDataLayer();
         this.backLayer1 = new BackLayer(0,180,"数据概览");
         this.backLayer2 = new BackLayer(900,180,"数据播放");
@@ -28,7 +27,6 @@ class ShowStage extends SceneBase{
         this.addChild(this.setDataLayer);
         this.addChild(this.buttonsLayer1);
         this.addChild(this.buttonsLayer2);
-       
     }
     //  this.addEventListener(mouse.MouseEvent.MOUSE_WHEEL,this.onMouseWheel,this);
     // public onMouseWheel(event:MouseEvent):void{

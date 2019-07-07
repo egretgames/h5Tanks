@@ -46,6 +46,21 @@ class ScrollBlock extends egret.Shape {
 
 }
 
+class MouseMoveMasking extends egret.Shape{
+    public listener:IhasMouseMoveEvent;
+    public pid:egret.DisplayObjectContainer;
+    constructor(posx:number,posy:number,w:number,h:number,pid:egret.DisplayObjectContainer, listener:IhasMouseMoveEvent){
+        super();
+        this.listener = listener;
+        this.pid = pid;
+        this.graphics.beginFill(0xFFFFFF,0.5);
+        this.graphics.drawRect(posx,posy,w,h);
+        this.graphics.endFill();
+        this.touchEnabled = true;
+        //this.pid.
+    }
+}
+
 class ScrollBarSelectionComponent extends egret.DisplayObjectContainer {
 
     public pid: ShowButtonsLayer;

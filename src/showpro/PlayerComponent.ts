@@ -223,8 +223,8 @@ class PlayerComponent extends egret.DisplayObjectContainer{
             this.now = egret.getTimer();
             this.pass = (this.now - this.timeOnEnterFrame)*this.playSpeed;
             this.currentTime+=this.pass;
-            console.log(this.pass);
-            console.log(this.currentTime);
+            //console.log(this.pass);
+            //console.log(this.currentTime);
             if(this.currentTime>this.pid.endTime){
                 this.currentTime = this.pid.endTime;
                 this.stop();
@@ -233,7 +233,7 @@ class PlayerComponent extends egret.DisplayObjectContainer{
             // 1，调整游标位置    2，绘制按钮状态
             this.scrollBarBlock.x = this.lineX + (this.currentTime-this.pid.startTime)*this.lineWidht / this.pid.timeLength;
             this.setCurrentTimeLabel();
-            console.log(this.scrollBarBlock.x);
+            //console.log(this.scrollBarBlock.x);
             for(let i = this.currentCommandIndex;i<this.pid.data.buttonCommands.length;i++){
                 if(this.pid.data.buttonCommands[i].time < this.currentTime){
                     this.pid.setButtonStateBlock(this.pid.data.buttonCommands[i].id,this.pid.data.buttonCommands[i].isPress);
