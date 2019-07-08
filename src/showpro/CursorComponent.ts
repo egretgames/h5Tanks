@@ -38,10 +38,7 @@ class CursorComponent extends egret.Shape {
         this.pid.onMouseButtonDown();
     }
     public onMove(event:egret.TouchEvent): void {
-        console.log(event.localX);
-        console.log(this.moveMasking.x);
         this.x += event.localX-this.moveMasking.x-this.x;
-        console.log(this.x);
         if (this.x < this.startX) {
             this.x = this.startX;
         }

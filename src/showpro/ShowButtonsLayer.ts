@@ -131,18 +131,12 @@ class ShowButtonsLayer extends SceneBase {
             if (command.time > this.data.selectStartTime.getTime() && command.time < this.data.selectEndTime.getTime()) {
                 if (command.isPress) {
                     this.buttonBlockList[command.id] = new TimeBlock(command.id, command.time,this.data.selectStartTime.getTime(),this.data.selectEndTime.getTime(),this.buttonTable.buttonArray[command.id], this);
-                    // console.log("add  " + command.id);
-                    // console.log(this.buttonBlockList);
                 } else {
                     if(this.buttonBlockList[command.id]){
                         this.buttonBlockList[command.id].setTimeLength(command.time);
                         this.timeBlockList.push(this.buttonBlockList[command.id]);
                         this.addChild(this.timeBlockList[this.timeBlockList.length-1]);
                         this.buttonBlockList[command.id] = null;
-                        // console.log("remove  " + command.id);
-                        // console.log(this.buttonBlockList);
-                        // console.log("timeblocks  " + command.id);
-                        // console.log(this.timeBlockList);
                     }else{
                         // 左游标正好移动到时间块中间的时候，时间块没有开始时间，补上一个对象，用左游标的开始时间作为开始时间
                         let block = new TimeBlock(command.id, this.data.selectStartTime.getTime(),this.data.selectStartTime.getTime(),this.data.selectEndTime.getTime(),this.buttonTable.buttonArray[command.id], this);
@@ -161,16 +155,22 @@ class ShowButtonsLayer extends SceneBase {
                 this.addChild(this.timeBlockList[this.timeBlockList.length-1]);       
             }
         }
-        
+        this.drawShowBlockRect(null);
     }
     public drawShowBlockRect(block:TimeBlock):void{
         if(!this.showBlockRect){
             this.showBlockRect = new egret.Shape();
             this.addChild(this.showBlockRect);
         }
-        this.showBlockRect.graphics.clear();
-        this.showBlockRect.graphics.lineStyle(1,0xFF0000);
-        this.showBlockRect.graphics.drawRect(block.x,block.y+1,block.width,block.height);
+        if(block){
+            this.showBlockRect.graphics.clear();
+            this.showBlockRect.graphics.lineStyle(1,0xFF0000);
+            this.showBlockRect.graphics.drawRect(block.x,block.y+1,block.width-1,block.height-1);
+            this.setChildIndex(this.showBlockRect,this.numChildren-1);
+        }else{
+            this.showBlockRect.graphics.clear();
+        }
+    
     }
     public onButtonBlockClick(id:number,time:number,timeLength:number):void{
         this.buttonName.text = id.toString();
@@ -184,6 +184,7 @@ class ShowButtonsLayer extends SceneBase {
     }
     public setSelectTime(): void {
         GameMain.showStage.onUserSetLocalTime();
+        
     }
     public updateLayer(): void {
         this.scrollBar.redrawComponent();

@@ -22,6 +22,8 @@ class AllData {
     public widht: number;
     public height: number;
 
+    //
+    public nativeConfig:any;
     //about ui
     public fontSize: number = 16;
 
@@ -60,6 +62,7 @@ class AllData {
 
     constructor() {
     }
+
     public btnCommandIndex = 1;
     public getButtonsCommand(castTimeUnit: number, commandsStr: string, packageTime: number): void {
         let highParam: number;

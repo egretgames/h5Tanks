@@ -7,13 +7,9 @@ class ShowStage extends SceneBase{
     public buttonsLayer1:ShowButtonsLayer;
     public buttonsLayer2:PlayAnimationLayer;
 
-    constructor(){
+    constructor(data:AllData){
         super();
-        this.data = new AllData();
-        // this.x = 0;
-        // this.y = 0;
-        // this.width = 10000;
-        // this.height = 10000;
+        this.data = data;
     }
     public onAddToStage(event: egret.Event):void{
         this.setDataLayer = new SetDataLayer();
