@@ -1,4 +1,4 @@
-class ButtonStateBlock extends egret.Shape{
+class ShowButtonIsPressBlock extends egret.Shape{
     constructor(posX:number,posY:number,w:number,h:number){
         super();
         this.x = posX;
@@ -21,14 +21,14 @@ class PlayAnimationLayer extends SceneBase{
     public endTime: number;
 
     public tableX: number = 100;
-    public tableY: number = 100;
+    public tableY: number = 30;
 
     public playerX: number = 80;
     public playerY: number = 520;
 
     public buttonTable:ButtonTable;
     public playerControll:PlayerComponent;
-    public btnStateBlocks:Array<ButtonStateBlock>;
+    public btnStateBlocks:Array<ShowButtonIsPressBlock>;
 
     constructor(x:number,y:number){
         super();
@@ -50,9 +50,9 @@ class PlayAnimationLayer extends SceneBase{
         this.buttonTable = new ButtonTable(this.tableX, this.tableY);
         this.addChild(this.buttonTable);
 
-        this.btnStateBlocks = new Array<ButtonStateBlock>();
+        this.btnStateBlocks = new Array<ShowButtonIsPressBlock>();
         for(let i = 0;i<this.buttonTable.buttonArray.length;i++){
-            this.btnStateBlocks[i] = new ButtonStateBlock(this.tableX+this.buttonTable.buttonArray[i].x, this.tableY+this.buttonTable.buttonArray[i].y, this.buttonTable.buttonArray[i].rectWidth,this.buttonTable.buttonArray[i].rectHeight);
+            this.btnStateBlocks[i] = new ShowButtonIsPressBlock(this.tableX+this.buttonTable.buttonArray[i].x, this.tableY+this.buttonTable.buttonArray[i].y, this.buttonTable.buttonArray[i].rectWidth,this.buttonTable.buttonArray[i].rectHeight);
             this.addChild(this.btnStateBlocks[i]);
         }
 

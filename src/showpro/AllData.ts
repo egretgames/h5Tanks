@@ -47,10 +47,11 @@ class AllData {
 
     public sourceCommandList: Array<any>;
     public selectedCommandList: Array<ButtonCommandData>;
+    public webRoot = "http://47.104.94.229:8081/sd/buttons";
 
     // package 数据部分；
     public timeUnit = 50;
-    public dataSource = [{ "package": "F20900B28D1F4849F20800B28D214AF20800B28D2D08F20900B28D30090AF20800B28D4148F20800B28D4849F20800B28D4D4FF20A00B28D4E0F8108F20800B28D5009", "time": 1561952738686 },
+    public dataSource =  [{ "package": "F20900B28D1F4849F20800B28D214AF20800B28D2D08F20900B28D30090AF20800B28D4148F20800B28D4849F20800B28D4D4FF20A00B28D4E0F8108F20800B28D5009", "time": 1561952738686 },
     { "package": "F20800B28A964DF20900B28A974B4CF20800B28A984AF20800B28A9F0AF20800B28AA54AF20800B28AA60DF20A00B28AA70A0B0C", "time": 1561954684733 }];
     //ButtonCommandData 是一个存放单个命令的类 结构：{id: number;    time: number;    isPress: boolean;}
     public buttonCommands: Array<ButtonCommandData>;
@@ -138,10 +139,9 @@ class AllData {
         console.log("获取数据的开始时间是："+this.userInputTime+"----"+this.userInputTime.getTime());
         console.log("获取数据的结束时间是："+new Date(+end)+"----"+end);
         console.log("获取数据的地垫ID号是："+this.matid);
-        let uri = "http://47.104.94.229:8081/sd/buttons?start="+start+"&end="+end+"&matid="+this.matid;
+        let uri = this.webRoot+"?start="+start+"&end="+end+"&matid="+this.matid;
         console.log("获取数据的完整连接是："+uri);
         request.open(uri,egret.HttpMethod.GET);
-        //request.open("https://lingyouhui.vip/main/v1/tb_tbk/material?material_id=3756&aliasId=&page_no=1&page_size=50",egret.HttpMethod.GET);
         request.send();
         request.addEventListener(egret.Event.COMPLETE,this.onGetComplete,this);
     }

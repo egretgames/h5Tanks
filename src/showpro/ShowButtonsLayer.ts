@@ -33,6 +33,7 @@ class TimeBlock extends egret.Shape {
     }
     public onClick(evnet:egret.TouchEvent):void{
         this.pid.onButtonBlockClick(this.buttonID,this.startTime,this.timeLength);
+        this.pid.drawShowBlockRect(this);
     }
 }
 class ShowButtonsLayer extends SceneBase {
@@ -41,10 +42,10 @@ class ShowButtonsLayer extends SceneBase {
 
     public fontSize: number;
     public labelX: number = 250;
-    public labelY: number = 30;
+    public labelY: number = 480;
 
     public tableX: number = 100;
-    public tableY: number = 100;
+    public tableY: number = 30;
 
     public scrollBarX: number = 80;
     public scrollBarY: number = 520
@@ -58,6 +59,7 @@ class ShowButtonsLayer extends SceneBase {
 
     public buttonBlockList: Array<TimeBlock>;
     public timeBlockList: Array<TimeBlock>;
+    public showBlockRect: egret.Shape;
 
     constructor(x: number, y: number) {
         super();
@@ -161,7 +163,15 @@ class ShowButtonsLayer extends SceneBase {
         }
         
     }
-
+    public drawShowBlockRect(block:TimeBlock):void{
+        if(!this.showBlockRect){
+            this.showBlockRect = new egret.Shape();
+            this.addChild(this.showBlockRect);
+        }
+        this.showBlockRect.graphics.clear();
+        this.showBlockRect.graphics.lineStyle(1,0xFF0000);
+        this.showBlockRect.graphics.drawRect(block.x,block.y+1,block.width,block.height);
+    }
     public onButtonBlockClick(id:number,time:number,timeLength:number):void{
         this.buttonName.text = id.toString();
         let date = new Date(time);
@@ -172,7 +182,7 @@ class ShowButtonsLayer extends SceneBase {
         let ss = timeLength%1000;
         this.keepTime.text = hours.toString()+":"+minutes.toString()+":"+seconds.toString()+"."+ss.toString();
     }
-    public onScrollBarChanageStop(): void {
+    public setSelectTime(): void {
         GameMain.showStage.onUserSetLocalTime();
     }
     public updateLayer(): void {

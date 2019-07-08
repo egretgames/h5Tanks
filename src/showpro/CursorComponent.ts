@@ -4,7 +4,7 @@ class CursorComponent extends egret.Shape {
     public startX: number;
     public endX:number;
     public moveMasking:MouseMoveMasking;
-    constructor(posx: number, posy: number, startX:number, endX:number,maskW:number,maskH:number, parent: IhasMouseMoveEvent) {
+    constructor(posx: number, posy: number, startX:number, endX:number,maskX:number,maskY:number,maskW:number,maskH:number, parent: IhasMouseMoveEvent) {
         super();
         this.startX = startX;
         this.endX = endX;
@@ -14,10 +14,7 @@ class CursorComponent extends egret.Shape {
         this.y = posy;
         this.touchEnabled = true;
         this.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onTouch, this)
-        this.addEventListener(egret.TouchEvent.TOUCH_END, this.endTouch, this)
-        let x = posx - (maskW - endX + startX)/2;
-        let y = posy - maskH/2;
-        this.moveMasking = new MouseMoveMasking(x,y,maskW,maskH,this);
+        this.moveMasking = new MouseMoveMasking(maskX,maskY,maskW,maskH,this);
         this.pid.addChild(this);
         this.pid.addChild(this.moveMasking);
     }
@@ -38,18 +35,20 @@ class CursorComponent extends egret.Shape {
         this.moveMasking.enable();
     }
     public endTouch(event: egret.TouchEvent): void {
-        this.moveMasking.unable();
         this.pid.onMouseButtonDown();
     }
-    public onMove(localX:number): void {
-        this.x += localX;
+    public onMove(event:egret.TouchEvent): void {
+        console.log(event.localX);
+        console.log(this.moveMasking.x);
+        this.x += event.localX-this.moveMasking.x-this.x;
+        console.log(this.x);
         if (this.x < this.startX) {
             this.x = this.startX;
         }
         if (this.x > this.endX) {
             this.x = this.endX;
         }
-        //this.pid.onBlockMove();
+        this.pid.onMouseMove(event);
     }
 
 }
@@ -59,28 +58,24 @@ class MouseMoveMasking extends egret.Shape{
     constructor(posx:number,posy:number,w:number,h:number, cursor:CursorComponent){
         super();
         this.cursor = cursor;
-        this.graphics.beginFill(0xFF0000,0.5);
+        this.graphics.beginFill(0x000000,0.2);
         this.graphics.drawRect(posx,posy,w,h);
         this.graphics.endFill();
         this.touchEnabled = true;
+        this.visible = false;
     }
     public enable():void{
         this.visible = true;
-        this.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onMoveThis, this);
+        this.addEventListener(egret.TouchEvent.TOUCH_MOVE, this.onMoveInThis, this);
+        this.addEventListener(egret.TouchEvent.TOUCH_END, this.unable, this);
     }
-    public unable():void{
+    public unable(event:egret.TouchEvent):void{
         this.visible = false;
-        this.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.onMoveThis, this);
+        this.removeEventListener(egret.TouchEvent.TOUCH_MOVE, this.onMoveInThis, this);
+        this.removeEventListener(egret.TouchEvent.TOUCH_END, this.unable, this);
+        this.cursor.endTouch(event);
     }
-    public onMoveThis(event:TouchEvent):void{
-        this.cursor.
-        // this.x += event.localX - this.anchorOffsetX;
-        // if (this.x < this.startX) {
-        //     this.x = this.startX;
-        // }
-        // if (this.x > this.endX + this.anchorOffsetX) {
-        //     this.x = this.endX + this.anchorOffsetX;
-        // }
-        // this.listener.onMouseMove();
+    public onMoveInThis(event:egret.TouchEvent):void{
+        this.cursor.onMove(event);
     }
 }

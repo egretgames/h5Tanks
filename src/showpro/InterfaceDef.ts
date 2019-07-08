@@ -1,4 +1,4 @@
 interface IhasMouseMoveEvent extends egret.DisplayObjectContainer{
-    onMouseMove(event:TouchEvent):void;
+    onMouseMove(event:egret.TouchEvent):void;
     onMouseButtonDown():void;
 }

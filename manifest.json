@@ -25,6 +25,7 @@
 		"bin-debug/showpro/AllData.js",
 		"bin-debug/showpro/BackLayerBar.js",
 		"bin-debug/LoadingUI.js",
+		"bin-debug/showpro/CursorComponent.js",
 		"bin-debug/showpro/InputComponent.js",
 		"bin-debug/showpro/InterfaceDef.js",
 		"bin-debug/showpro/PlayAnimationLayer.js",
