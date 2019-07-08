@@ -4,10 +4,6 @@ class GameMain {
 
     public static stage: egret.Stage;
 
-    public static sceneManager:SceneManager;
-    public static uiManager: UIManager;
-    public static resManager: ResManager;
-
     public static showStage:ShowStage;
 
 

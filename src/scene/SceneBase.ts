@@ -10,10 +10,6 @@ abstract class SceneBase extends egret.DisplayObjectContainer {
     protected abstract onAddToStage(event: egret.Event):void
 
     public loadResBySceneNameAndKeys():void{
-        if(this.sceneName !=null && this.resKeys != null)
-        {
-            GameMain.resManager.loadResByDynamicGroup(this.sceneName,this.resKeys);
-        }
     }
     
     private onUpdate(e: egret.Event) {

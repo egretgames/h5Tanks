@@ -11,22 +11,15 @@
 	],
 	"game": [
 		"bin-debug/scene/SceneBase.js",
-		"bin-debug/ui/UIBase.js",
-		"bin-debug/showpro/ButtonTable.js",
+		"bin-debug/showpro/InputComponent.js",
+		"bin-debug/Main.js",
 		"bin-debug/Platform.js",
-		"bin-debug/config/GameConfig.js",
-		"bin-debug/manager/ResManager.js",
-		"bin-debug/manager/SceneManager.js",
-		"bin-debug/manager/UIManager.js",
-		"bin-debug/scene/LogoScene.js",
-		"bin-debug/scene/MainMenuScene.js",
-		"bin-debug/scene/QFdevScene.js",
 		"bin-debug/GameMain.js",
 		"bin-debug/showpro/AllData.js",
 		"bin-debug/showpro/BackLayerBar.js",
-		"bin-debug/LoadingUI.js",
+		"bin-debug/showpro/ButtonTable.js",
 		"bin-debug/showpro/CursorComponent.js",
-		"bin-debug/showpro/InputComponent.js",
+		"bin-debug/LoadingUI.js",
 		"bin-debug/showpro/InterfaceDef.js",
 		"bin-debug/showpro/PlayAnimationLayer.js",
 		"bin-debug/showpro/PlayerComponent.js",
@@ -34,10 +27,6 @@
 		"bin-debug/showpro/SelectComponent.js",
 		"bin-debug/showpro/SetDataLayer.js",
 		"bin-debug/showpro/ShowButtonsLayer.js",
-		"bin-debug/showpro/ShowStage.js",
-		"bin-debug/tool/ResHelper.js",
-		"bin-debug/Main.js",
-		"bin-debug/ui/logo/LogoFace.js",
-		"bin-debug/ui/mainmenu/MainMenuFace.js"
+		"bin-debug/showpro/ShowStage.js"
 	]
 }
